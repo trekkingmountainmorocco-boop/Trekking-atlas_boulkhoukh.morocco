@@ -3,59 +3,125 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trekking with Boulkhoukh | Atlas Mountains Morocco</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <title>Trekking with Boulkhoukh | Ait Bougmez Guide</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
-        :root { --primary: #2D5016; --secondary: #C17D11; --light: #f9f9f9; --dark: #1a1a1a; --white: #ffffff; }
-        * { box-sizing: border-box; }
-        body { font-family: 'Open Sans', sans-serif; margin: 0; padding: 0; color: var(--dark); line-height: 1.6; scroll-behavior: smooth; }
-        header { background: var(--dark); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; color: white; position: sticky; top: 0; z-index: 1000; }
-        .logo img { height: 60px; }
-        nav ul { list-style: none; display: flex; margin: 0; padding: 0; }
+        :root { --primary: #2c3e50; --accent: #e67e22; --secondary: #27ae60; --light: #f4f7f6; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Open Sans', sans-serif; color: #333; line-height: 1.6; scroll-behavior: smooth; }
+        
+        nav { background: var(--primary); padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; }
+        .logo { color: white; font-size: 1.2rem; font-weight: bold; font-family: 'Montserrat'; text-transform: uppercase; }
+        nav ul { list-style: none; display: flex; }
         nav ul li { margin-left: 20px; }
-        nav ul li a { color: white; text-decoration: none; font-weight: bold; font-size: 0.9rem; text-transform: uppercase; transition: 0.3s; }
-        nav ul li a:hover { color: var(--secondary); }
-        #home { position: relative; height: 80vh; background: #000; overflow: hidden; }
-        .slides { position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1s ease-in-out; }
-        .slides.active { opacity: 0.7; }
-        .hero-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; color: white; z-index: 10; width: 90%; }
-        .hero-text h1 { font-family: 'Montserrat', sans-serif; font-size: 3rem; text-transform: uppercase; margin: 0; text-shadow: 2px 2px 10px rgba(0,0,0,0.5); }
-        section { padding: 70px 5%; }
-        .section-title { text-align: center; margin-bottom: 40px; }
-        .section-title h2 { font-family: 'Montserrat'; font-size: 2.2rem; color: var(--primary); text-transform: uppercase; }
-        .line { width: 60px; height: 4px; background: var(--secondary); margin: 10px auto; }
-        .tour-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
-        .tour-card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.08); transition: 0.3s; }
-        .tour-card:hover { transform: translateY(-8px); }
-        .tour-card img { width: 100%; height: 220px; object-fit: cover; }
-        .tour-content { padding: 20px; }
-        footer { background: var(--dark); color: white; text-align: center; padding: 30px; font-size: 0.9rem; }
-        @media (max-width: 768px) { header { flex-direction: column; } nav ul { margin-top: 15px; } .hero-text h1 { font-size: 1.8rem; } }
+        nav ul li a { color: white; text-decoration: none; font-size: 0.9rem; transition: 0.3s; }
+        nav ul li a:hover { color: var(--accent); }
+
+        .hero { 
+            height: 70vh; 
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('f atlas.jpeg');
+            background-size: cover; background-position: center;
+            display: flex; flex-direction: column; justify-content: center; align-items: center; color: white; text-align: center;
+        }
+        .hero h1 { font-family: 'Montserrat'; font-size: 3rem; margin-bottom: 10px; }
+        
+        section { padding: 60px 10%; }
+        h2 { text-align: center; font-family: 'Montserrat'; margin-bottom: 40px; color: var(--primary); position: relative; }
+        h2::after { content: ''; width: 50px; height: 3px; background: var(--accent); position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%); }
+
+        .about-content { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+        .about-text h3 { color: var(--secondary); margin-bottom: 15px; }
+        .about-img img { width: 100%; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+        .card { background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 3px 10px rgba(0,0,0,0.1); transition: 0.3s; }
+        .card:hover { transform: translateY(-5px); }
+        .card img { width: 100%; height: 200px; object-fit: cover; }
+        .card-body { padding: 20px; }
+        .card-body h3 { margin-bottom: 10px; color: var(--primary); }
+
+        .contact-section { background: var(--light); display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+        .contact-info i { color: var(--accent); margin-right: 10px; width: 20px; }
+        .map-box iframe { width: 100%; height: 300px; border-radius: 10px; border: 0; }
+
+        footer { background: var(--primary); color: white; text-align: center; padding: 40px 10%; }
+        .btn-whatsapp { background: #25d366; color: white; padding: 12px 25px; border-radius: 30px; text-decoration: none; display: inline-block; font-weight: bold; margin-top: 20px; }
+
+        @media (max-width: 768px) {
+            .about-content, .contact-section { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 2rem; }
+        }
     </style>
 </head>
 <body>
-<header>
-    <div class="logo"><img src="35424.png" alt="Logo"></div>
-    <nav><ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#trekking">Tours</a></li>
-        <li><a href="#contact">Contact</a></li>
-    </ul></nav>
-</header>
 
-<section id="home" style="padding:0;">
-    <img class="slides active" src="f atlas.jpeg">
-    <img class="slides" src="atlas morocco.jpeg">
-    <img class="slides" src="IMG20260510172311.jpg">
-    <div class="hero-text">
-        <h1>Boulkhoukh Expeditions</h1>
-        <p>Your Professional Guide in the Atlas Mountains</p>
+<nav>
+    <div class="logo">Boulkhoukh Expeditions</div>
+    <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#tours">Tours</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
+
+<div id="home" class="hero">
+    <h1>Experience the High Atlas</h1>
+    <p>Authentic Trekking & Cultural Journeys with Local Experts</p>
+    <a href="#contact" class="btn-whatsapp" style="background: var(--accent);">Book Your Adventure</a>
+</div>
+
+<section id="about">
+    <h2>About Us</h2>
+    <div class="about-content">
+        <div class="about-text">
+            <h3>Your Local Guide in Ait Bougmez</h3>
+            <p>Welcome! I am El Houssine Boulkhoukh, a certified mountain guide with years of experience leading treks in the High Atlas. Based in the beautiful Ait Bougmez valley, we specialize in authentic mountain experiences.</p>
+            <p>Our team provides everything from summit climbs like M'goun to cultural walks through local Berber villages, ensuring safety and an unforgettable immersion into our way of life.</p>
+        </div>
+        <div class="about-img">
+            <img src="atlas morocco.jpeg" alt="Atlas Mountains">
+        </div>
     </div>
 </section>
 
-<section id="trekking">
-    <div class="section-title"><h2>Our Destinations</h2><div class="line"></div></div>
-    <div class="tour-grid">
-        <div class="tour-card">
-            <img src="m'goun 4067 m.jpeg"
+<section id="tours">
+    <h2>Popular Expeditions</h2>
+    <div class="grid">
+        <div class="card">
+            <img src="m'goun 4067 m.jpeg" alt="Mgoun">
+            <div class="card-body">
+                <h3>Mount M'goun (4067m)</h3>
+                <p>A multi-day trek to the second highest peak in Morocco. Incredible ridges and geological formations.</p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="cascade ouzoud.jpeg" alt="Ouzoud">
+            <div class="card-body">
+                <h3>Ouzoud Waterfalls</h3>
+                <p>A stunning day trip or overnight stay to the most famous waterfalls in North Africa.</p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="ait Ben haddo .jpeg" alt="Ait Ben Haddou">
+            <div class="card-body">
+                <h3>Ait Ben Haddou</h3>
+                <p>Step back in time at this UNESCO World Heritage Site, a masterpiece of clay architecture.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="contact">
+    <h2>Contact & Location</h2>
+    <div class="contact-section">
+        <div class="contact-info">
+            <h3>Start Planning</h3>
+            <p>Ready for your next adventure? Reach out for a custom itinerary or group booking.</p>
+            <p style="margin-top: 20px;"><i class="fas fa-phone"></i> +212 671 789 276</p>
+            <p><i class="fas fa-envelope"></i> trekkingmountainmorocco@outlook.fr</p>
+            <p><i class="fas fa-map-marker-alt"></i> Tabant, Ait Bougmez Valley, Morocco</p>
+            <a href="https://wa.me/212671789276" class="btn-whatsapp"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
+        </div>
+        <div class="map-
